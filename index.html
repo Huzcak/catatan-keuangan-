@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack - Keuangan Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">F</div>
+            <div>
+                <h2>FinTrack</h2>
+                <span>Personal Finance</span>
+            </div>
+        </div>
+
+        <div class="menu-label">MENU UTAMA</div>
+
+        <nav>
+            <a href="#dashboard" class="nav-link active">
+                <span>▦</span> Dashboard
+            </a>
+            <a href="#transaksi" class="nav-link">
+                <span>⇄</span> Transaksi
+            </a>
+            <a href="#grafik" class="nav-link">
+                <span>▥</span> Analisis Keuangan
+            </a>
+            <a href="#laporan" class="nav-link">
+                <span>▤</span> Laporan
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon">✦</div>
+                <h4>Kelola keuanganmu</h4>
+                <p>Catat setiap pemasukan dan pengeluaran agar keuangan lebih teratur.</p>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">U</div>
+                <div>
+                    <strong>Pengguna</strong>
+                    <small>Personal Account</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <div class="topbar">
+            <div>
+                <p class="breadcrumb">Workspace / Dashboard</p>
+                <h1>Dashboard Keuangan</h1>
+                <p class="subtitle">Pantau kondisi keuanganmu hari ini.</p>
+            </div>
+
+            <div class="top-date">
+                <span>◷</span>
+                <span id="currentDate">Keuangan Harian</span>
+            </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard">
+
+            <div class="section-heading">
+                <div>
+                    <h3>Ringkasan Keuangan</h3>
+                    <p>Informasi keuangan secara keseluruhan</p>
+                </div>
+                <span class="period">Semua waktu</span>
+            </div>
+
+            <div class="cards">
+
+                <div class="card balance-card">
+                    <div class="card-top">
+                        <span>Total Saldo</span>
+                        <span class="card-icon">◈</span>
+                    </div>
+                    <h2 id="balance">Rp0</h2>
+                    <p class="card-note">Pemasukan dikurangi pengeluaran</p>
+                    <div class="balance-decoration"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <span>Total Pemasukan</span>
+                        <span class="card-icon green-bg">↗</span>
+                    </div>
+                    <h2 class="green" id="income">Rp0</h2>
+                    <p class="card-note">Akumulasi seluruh pemasukan</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <span>Total Pengeluaran</span>
+                        <span class="card-icon red-bg">↘</span>
+                    </div>
+                    <h2 class="red" id="expense">Rp0</h2>
+                    <p class="card-note">Akumulasi seluruh pengeluaran</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <span>Jumlah Transaksi</span>
+                        <span class="card-icon blue-bg">▤</span>
+                    </div>
+                    <h2 id="total">0</h2>
+                    <p class="card-note">Total transaksi tercatat</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FORM TRANSAKSI -->
+        <section class="section" id="input-transaksi">
+            <div class="section-heading">
+                <div>
+                    <h3 id="formTitle">Tambah Transaksi</h3>
+                    <p>Masukkan detail transaksi keuanganmu</p>
+                </div>
+                <span class="section-icon">＋</span>
+            </div>
+
+            <form id="transactionForm">
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label>Tanggal Transaksi</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Jenis Transaksi</label>
+                        <select id="type">
+                            <option value="income">Pemasukan</option>
+                            <option value="expense">Pengeluaran</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Kategori</label>
+                        <select id="category">
+                            <option>Gaji</option>
+                            <option>Bisnis</option>
+                            <option>Investasi</option>
+                            <option>Uang Saku</option>
+                            <option>Makanan</option>
+                            <option>Transportasi</option>
+                            <option>Belanja</option>
+                            <option>Pendidikan</option>
+                            <option>Hiburan</option>
+                            <option>Kesehatan</option>
+                            <option>Tagihan</option>
+                            <option>Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Nominal (Rupiah)</label>
+                        <input type="number" id="amount"
+                            placeholder="Contoh: 50000"
+                            min="1" step="1" required>
+                    </div>
+
+                    <div class="field full">
+                        <label>Keterangan</label>
+                        <input type="text" id="description"
+                            placeholder="Tuliskan keterangan transaksi...">
+                    </div>
+
+                    <div class="field full">
+                        <button type="submit" class="submit" id="submitBtn">
+                            ＋ Simpan Transaksi
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </section>
+
+        <!-- RIWAYAT -->
+        <section class="section" id="transaksi">
+            <div class="section-heading">
+                <div>
+                    <h3>Riwayat Transaksi</h3>
+                    <p>Daftar seluruh aktivitas keuanganmu</p>
+                </div>
+                <span class="section-icon">↔</span>
+            </div>
+
+            <div class="filters">
+                <div class="filter-input">
+                    <label>Filter tanggal</label>
+                    <input type="date" id="filterDate">
+                </div>
+
+                <div class="filter-input">
+                    <label>Jenis transaksi</label>
+                    <select id="filterType">
+                        <option value="all">Semua Transaksi</option>
+                        <option value="income">Pemasukan</option>
+                        <option value="expense">Pengeluaran</option>
+                    </select>
+                </div>
+
+                <button class="reset-btn" onclick="resetFilter()">
+                    ↻ Reset
+                </button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TANGGAL</th>
+                            <th>KETERANGAN</th>
+                            <th>KATEGORI</th>
+                            <th>JENIS</th>
+                            <th>NOMINAL</th>
+                            <th>AKSI</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionList"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- GRAFIK -->
+        <section class="section" id="grafik">
+            <div class="section-heading">
+                <div>
+                    <h3>Analisis Keuangan</h3>
+                    <p>Perbandingan pemasukan dan pengeluaran</p>
+                </div>
+                <span class="period">7 Hari Terakhir</span>
+            </div>
+
+            <div class="chart" id="chart"></div>
+
+            <div class="legend">
+                <span><i class="dot income-bar"></i> Pemasukan</span>
+                <span><i class="dot expense-bar"></i> Pengeluaran</span>
+            </div>
+        </section>
+
+        <!-- LAPORAN -->
+        <section class="section export-section" id="laporan">
+            <div>
+                <h3>Unduh Laporan Keuangan</h3>
+                <p>Simpan data transaksi untuk dokumentasi dan evaluasi.</p>
+            </div>
+
+            <button class="export-btn" onclick="exportCSV()">
+                ↓ Download Laporan CSV
+            </button>
+        </section>
+
+        <footer>
+            <p>© 2026 FinTrack. Personal Finance Management.</p>
+        </footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    // Menampilkan tanggal hari ini
+    const now = new Date();
+    document.getElementById("currentDate").textContent =
+        now.toLocaleDateString("id-ID", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+</script>
+
+</body>
+</html>
